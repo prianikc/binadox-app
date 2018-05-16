@@ -169,7 +169,7 @@ router.post('/signin', (req, res) => {
 
       }
       return res.json({
-        message: 'Auth faileeeeed'
+        message: 'Auth failed'
       });
     });
   });
