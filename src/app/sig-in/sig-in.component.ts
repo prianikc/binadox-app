@@ -12,7 +12,6 @@ export class SigInComponent implements OnInit {
 
   public user: {
     message: string
-    token: string,
     loginStatus: boolean
   };
   form: FormGroup;
@@ -46,8 +45,9 @@ login() {
     this.authService.login(val.email, val.password)
       .subscribe(user => {
         this.user = user;
+        console.log(user);
         if (this.user.loginStatus) {
-          this.router.navigate(['profile']);
+        //  this.router.navigate(['profile']);
         }
       });
   }

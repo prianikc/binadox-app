@@ -17,7 +17,7 @@ export class AuthService {
     private _http: HttpClient,
     private jwtHelper: JwtHelperService) { }
 
-  public isAuthenticated(): boolean {
+  private isAuthenticated(): boolean {
     const token = localStorage.getItem('id_token');
     // Check whether the token is expired and return
     // true or false
@@ -38,6 +38,7 @@ export class AuthService {
     return this._http.post<any>(this.API + '/signin', { email, password })
       .pipe(tap(res => {
         this.res = res;
+        console.log(res);
         if (res.loginStatus === true) {
           localStorage.setItem('id_token', res.token);
         }
