@@ -16,13 +16,14 @@
         <label for="email" class="">Username</label>
       </div>
       <div class="col-sm-9">
-        <input formControlName="email" type="email" id="email" class="form-control" placeholder="Email address" required autofocus>
+        <input [style.border-color]="user?.loginStatus === false ? '#f45757': '#9a9a9a'" formControlName="email" type="email"
+          id="email" class="form-control" placeholder="Email address" required autofocus>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
       <div class="col-sm-9">
-          <small class="form-text text-danger mt-2 mb-0">{{user?.message}}</small>
+        <small class="form-text text-danger mt-2 mb-0">{{user?.message}}</small>
       </div>
 
     </div>
@@ -31,12 +32,13 @@
         <label for="password" class="">Password</label>
       </div>
       <div class="col-sm-9">
-        <input formControlName="password" type="password" id="password" class="form-control mb-0" placeholder="Password" required>
+        <input [style.border-color]="user?.loginStatus === false ? '#f45757': '#9a9a9a'" formControlName="password" type="password"
+          id="password" class="form-control mb-0" placeholder="Password" required>
       </div>
     </div>
     <div class="row mt-5">
       <div class="col-12 text-right">
-          <button class="button" type="submit" [disabled]="!form.valid" (click)="login()">Login</button>
+        <button class="button" type="submit" [disabled]="!form.valid" (click)="login()">Login</button>
 
       </div>
     </div>

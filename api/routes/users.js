@@ -135,10 +135,10 @@ router.post('/signin', (req, res) => {
     console.log(user.length);
     if (user.length < 1) {
       res.json({
-        succes: false,
-        message: "Почта не зарегистрирована !"
+        message: 'Mail missing',
+        loginStatus: false
       });
-      console.log('mail missing!!!!');
+      console.log('Mail missing');
       return;
     }
     if (err) {
@@ -162,14 +162,14 @@ router.post('/signin', (req, res) => {
         res.status(200).json({
           message: 'Auth successful',
           token: token,
-          expiresIn: 1000,
           loginStatus: true
         });
         return;
 
       }
       return res.json({
-        message: 'Auth failed'
+        message: 'Incorrect username or pasword',
+        loginStatus: false
       });
     });
   });
