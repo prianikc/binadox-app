@@ -17,6 +17,9 @@ router.get('/', (req, res) => {
           message: 'Success',
           'services': rows
         });
+        
+        
+      //  console.log(rows);
         console.log('services list completed');
   
       }

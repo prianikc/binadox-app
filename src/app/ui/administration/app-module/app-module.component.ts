@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Observable } from 'rxjs';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-app-module',
@@ -9,10 +10,7 @@ import { Observable } from 'rxjs';
 })
 
 export class AppModuleComponent implements OnInit {
-  public checkConnetion: boolean;
-  public checkDiscovered: boolean;
-  public checkUsed: boolean;
-  public data: {
+   public data: {
     services: [
       {
         id: number,
@@ -30,61 +28,15 @@ export class AppModuleComponent implements OnInit {
 
 
   ngOnInit() {
-    // this.getServicesList();
+    this.getServicesList();
   }
-  takeConnetedServices() {
-    if (this.checkConnetion === true) {
-      this.checkConnetion = false;
-      this.getServicesList();
-    } else {
-      this.checkConnetion = true;
-      this.getServicesList();
-    }
-  }
-  takeDiscoveredServices() {
-    if (this.checkDiscovered) {
-      this.checkDiscovered = false;
-      this.getServicesList();
-    } else {
-      this.checkDiscovered = true;
-      this.getServicesList();
-    }
-  }
-  takeUnusedServices() {
-    if (this.checkUsed) {
-      this.checkUsed = false;
-      this.getServicesList();
-    } else {
-      this.checkUsed = true;
-      this.getServicesList();
-    }
-  }
+
   getServicesList() {
     this.adminService.getServices()
       .subscribe(data => {
         this.data = data;
-        const services = data.services;
+        this.services = data.services;
         console.log(this.services);
-        if (this.checkConnetion) {
-          console.log(this.checkConnetion);
-          const connected = services.filter(item => item.connected === 1);
-          console.log(connected);
-          this.services = connected;
-        } if (this.checkDiscovered) {
-          const discovered = services.filter(item => item.connected === 0);
-          this.services = discovered;
-        } if (this.checkUsed) {
-          const unused = services.filter(item => item.used === 0);
-          this.services = unused;
-        } if (this.checkConnetion && this.checkDiscovered) {
-          const connected = services.filter(item => item.connected === 1);
-          const discovered = services.filter(item => item.connected === 0);
-
-          this.services = connected.concat(discovered);
-          console.log(this.services);
-        } else {
-          this.services = [];
-        }
       });
   }
 }
