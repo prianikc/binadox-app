@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
 const usersRoutes = require('../api/routes/users');
+const servicesRoutes = require('../api/routes/services');
 
 
 app.use(morgan('dev'));
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/', usersRoutes);
+app.use('/services', servicesRoutes);
 
 
 app.use((req, res, next) => {

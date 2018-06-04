@@ -16,6 +16,21 @@
     border-radius: 16px;
     background-color: #487ffe;
 }
+.button-green {
+    padding-top: 8px;
+    width: 98px;
+    height: 32px;
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+    border-radius: 16px;
+    background-color: #2bc339;
+}
 .button:disabled {
     background: #9ea5b5;
+}
+.bg-gray{
+    background: #f7f7f7;
 }

@@ -13,12 +13,19 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthService } from './auth.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UiModule } from './ui/ui.module';
+import { AdminService } from './ui/administration/admin.service';
+import { StatusColorDirective } from './ui/administration/status-color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigInComponent,
     SignUpComponent,
+    PageNotFoundComponent,
+    StatusColorDirective,
+
   ],
   imports: [
     BrowserModule,
@@ -26,6 +33,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    UiModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
@@ -35,7 +43,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     })
   ],
   providers: [
-    AuthService
+    AuthService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

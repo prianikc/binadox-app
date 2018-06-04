@@ -1,0 +1,24 @@
+<nav class="nav-top d-flex align-items-center">
+  <div class="binadox-logo-white d-flex align-items-center justify-content-center">
+    <img src="../../assets/img/logo_white.png" alt="">
+  </div>
+  <div class="ui-nav">
+    <a class="ui-link" routerLink="./dashboard" routerLinkActive="active">Dashboard</a>
+    <a class="ui-link" routerLink="./saas-wed-usage" routerLinkActive="active">Saas Web Usage</a>
+    <a class="ui-link" routerLink="./host-software" routerLinkActive="active">Host Software Licenses</a>
+    <a class="ui-link" routerLink="./administration" routerLinkActive="active">Administration</a>
+  </div>
+  <div class="user-nav d-flex align-items-center ml-auto">
+      <i class="fa fa-user"></i>
+      <p class="user-name"><strong>{{userName}}</strong></p>
+      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+  </div>
+</nav>
+<nav class="nav-bottom d-flex align-items-center">
+  <div class="empty-block"></div>
+  <div class="admin-nav">
+    <a class="ui-link" routerLink="./administration/ticketing" routerLinkActive="active">Ticketing</a>
+    <a class="ui-link" routerLink="./administration/app-module" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">App module</a>
+    <a class="ui-link" routerLink="./administration/agent" routerLinkActive="active">Agent</a>
+  </div>
+</nav>

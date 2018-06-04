@@ -48,26 +48,7 @@ router.get('/users/:id', checkAuth, (req, res) => {
   });
 });
 
-router.get('/users', checkAuth, (req, res) => {
-  let sql = 'SELECT email, id FROM users';
-  config.query(sql, (err, rows) => {
-    if (err) {
-      res.json({
-        'Error': true,
-        message: 'Error Execute Sql'
-      });
-      console.log(err);
-    } else {
-      res.status(200).json({
-        'Error': false,
-        message: 'Success',
-        'Users': rows
-      });
-      console.log('Users list completed');
 
-    }
-  });
-});
 
 router.post('/signup', (req, res) => {
 
@@ -153,7 +134,8 @@ router.post('/signin', (req, res) => {
       if (result) {
         const token = jwt.sign({
             email: user[0].emaill,
-            userId: user[0].id
+            userId: user[0].id,
+            userName: user[0].name
           },
           process.env.JWT_KEY, {
             expiresIn: '1h'

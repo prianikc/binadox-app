@@ -20,7 +20,7 @@ export class SigInComponent implements OnInit {
     private authService: AuthService,
     private router: Router) { }
 
-    private initForm(): void {
+  private initForm(): void {
     this.form = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]]
@@ -34,26 +34,26 @@ export class SigInComponent implements OnInit {
 
     return result;
   }
-login() {
-  const val = this.form.value;
-  const controls = this.form.controls;
-  if (this.form.invalid) {
-    Object.keys(controls)
-      .forEach(controlName => controls[controlName].markAsTouched());
-    return;
-  } else {
-    this.authService.login(val.email, val.password)
-      .subscribe(user => {
-        this.user = user;
-        console.log(user);
-        if (this.user.loginStatus) {
-        //  this.router.navigate(['profile']);
-        }
-      });
+  login() {
+    const val = this.form.value;
+    const controls = this.form.controls;
+    if (this.form.invalid) {
+      Object.keys(controls)
+        .forEach(controlName => controls[controlName].markAsTouched());
+      return;
+    } else {
+      this.authService.login(val.email, val.password)
+        .subscribe(user => {
+          this.user = user;
+          console.log(user);
+          if (this.user.loginStatus) {
+            this.router.navigate(['ui/administration']);
+          }
+        });
+    }
   }
-}
-ngOnInit() {
-  this.initForm();
-}
+  ngOnInit() {
+    this.initForm();
+  }
 
 }

@@ -1,0 +1,47 @@
+<div class="bg-gray wraper d-flex align-items-center justify-content-center">
+  <div class="ui-card d-flex flex-column">
+    <div>
+      <strong>App Integration</strong>
+    </div>
+    <div class="search-box py-3">
+
+
+      <form class="d-flex flex-row align-items-center">
+        <input class="form-control form-search mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <input (click)="takeConnetedServices()" class="ui-checkbox" type="checkbox" value="" id="connected">
+        <label class="form-check-label" for="connected">
+          Connected
+        </label>
+        <input (click)="takeDiscoveredServices()" class="ui-checkbox" type="checkbox" value="" id="discovered">
+        <label class="form-check-label" for="discovered">
+          Discovered (not connected)
+        </label>
+        <input (click)="takeUnusedServices()" class="ui-checkbox" type="checkbox" value="" id="unused">
+        <label class="form-check-label" for="unused">
+          Unused
+        </label>
+      </form>
+
+
+    </div>
+    <div class="ui-services-box d-flex flex-wrap justify-content-between">
+      <div *ngFor="let service of services"
+      class="ui-service d-flex flex-wrap justify-content-between align-items-center"
+      [ngClass]="{'brd-warning': service.warning}"
+      [style.border-color]="!service.connected || !service.used ? '#9ea5b5':'#2bc339'"
+      
+      >
+        <img src="{{service.url}}" alt="">
+        <p>{{service.name}}</p>
+        <div *ngIf="service.warning" ><i class="fa fa-exclamation-circle" aria-hidden="true"></i></div>
+        <div *ngIf="!service.used" ><i class="fa fa-lock" aria-hidden="true"></i></div>
+        <div
+        class="button-green"
+        *ngIf="service.used"
+        [style.background-color]="service.connected === 0 ? '#9ea5b5': '#2bc339'">
+          {{ service.connected ? "Connected" : "Connect" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
