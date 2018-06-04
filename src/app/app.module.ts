@@ -7,13 +7,13 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 
 import { AppComponent } from './app.component';
-import { SigInComponent } from './sig-in/sig-in.component';
+import { SigInComponent } from './ui/sig-in/sig-in.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AuthService } from './auth.service';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SignUpComponent } from './ui/sign-up/sign-up.component';
+import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { UiModule } from './ui/ui.module';
 import { AdminService } from './ui/administration/admin.service';
 import { StatusColorDirective } from './ui/administration/status-color.directive';

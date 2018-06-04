@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { SigInComponent } from './sig-in/sig-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SigInComponent } from './ui/sig-in/sig-in.component';
+import { SignUpComponent } from './ui/sign-up/sign-up.component';
+import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { UiModule } from './ui/ui.module';
 
 const routes: Routes = [
