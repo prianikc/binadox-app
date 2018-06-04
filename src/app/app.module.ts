@@ -17,6 +17,7 @@ import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.compon
 import { UiModule } from './ui/ui.module';
 import { AdminService } from './ui/administration/admin.service';
 import { StatusColorDirective } from './ui/administration/status-color.directive';
+import { FilterPipe } from './ui/administration/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { StatusColorDirective } from './ui/administration/status-color.directive
     SignUpComponent,
     PageNotFoundComponent,
     StatusColorDirective,
+    FilterPipe,
 
   ],
   imports: [

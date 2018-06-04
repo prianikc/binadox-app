@@ -70,13 +70,13 @@ export class AppModuleComponent implements OnInit {
           const connected = services.filter(item => item.connected === 1);
           console.log(connected);
           this.services = connected;
-        }  if (this.checkDiscovered) {
+        } if (this.checkDiscovered) {
           const discovered = services.filter(item => item.connected === 0);
           this.services = discovered;
-        }  if (this.checkUsed) {
+        } if (this.checkUsed) {
           const unused = services.filter(item => item.used === 0);
           this.services = unused;
-        }  if (this.checkConnetion && this.checkDiscovered) {
+        } if (this.checkConnetion && this.checkDiscovered) {
           const connected = services.filter(item => item.connected === 1);
           const discovered = services.filter(item => item.connected === 0);
 
