@@ -1,9 +1,11 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Observable } from 'rxjs';
-import { FilterPipe } from '../filter.pipe';
+import { FilterPipe, multiFilter } from '../filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CapitalizeFirstPipe } from '../capitalize-first.pipe';
+// import { multiFilter } from '../multi.filter';
 
 
 @Component({
@@ -13,11 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 
 export class AppModuleComponent implements OnInit {
-  private filter: any = {};
   public query = '';
   public connected = false;
   public discovered = false;
-  public used = false;
+  public unused = false;
 
   public data: {
     services: [
@@ -26,8 +27,9 @@ export class AppModuleComponent implements OnInit {
         name: string,
         url: string,
         connected: boolean,
-        used: boolean,
-        warning: boolean
+        unused: boolean,
+        warning: boolean,
+        installed: boolean
       }
 
     ]
@@ -37,87 +39,18 @@ export class AppModuleComponent implements OnInit {
 
 
   ngOnInit() {
-    const filter = {
-      // email: '',
-      // name: 'Mark'
-      address: 'England'
-    };
-    let users = [{
-      name: 'John',
-      email: 'johnson@mail.com',
-      age: 25,
-      address: 'USA'
-    },
-    {
-      name: 'Tom',
-      email: 'tom@mail.com',
-      age: 35,
-      address: 'England'
-    },
-    {
-      name: 'Mark',
-      email: 'mark@mail.com',
-      age: 28,
-      address: 'England'
-    }
-    ];
-
-
-    users = users.filter(function (item) {
-      for (const key in filter) {
-        if (item[key] === undefined || item[key] !== filter[key]) {
-          return false;
-        }
-      }
-      return true;
-    });
-
-    console.log(users);
-
-    const filterConditionType = 'tree';
-    const filterConditionColors = ['yellow', 'brown'];
-
-    // A function which returns a function to be used for filtering.
-    const includeType = (includedType) =>
-      ({ type }) => type === includedType;
-    // Another function which returns a function to also be used for filtering.
-    const includeColors = (includedColors) =>
-      ({ colors }) => colors.some(color => includedColors.includes(color));
-
-    // This function takes any number of functions, and returns a function.
-    // It returns a function that will "AND" together their return values of all the original functions
-    const and = (...funcs) => (...innerArgs) => funcs.every(func => func(...innerArgs));
-
-    // Create a filter which includes the type `filterConditionType`
-    const treeFilter = includeType(filterConditionType);
-    // Create a filter which includes the colors in `filterConditionColors`
-    const colorsFilter = includeColors(filterConditionColors);
-    // The array of test data
-    const arr = [
-      { id: 1, type: 'tree', colors: ['green', 'brown'] },
-      { id: 2, type: 'animal', colors: ['yellow', 'green'] },
-      { id: 3, type: 'tree', colors: ['yellow', 'brown'] }
-    ];
-
-    // Now do that actual filtering of the array.
-    const filteredArray = arr.filter(and(treeFilter, colorsFilter));
-    // And print it
-    console.log(filteredArray);
-
-
-
     this.getServicesList();
   }
+
   filterConnected() {
     if (!this.connected) {
       this.connected = false;
       this.getServicesList();
-      console.log(this.connected);
       return;
     } else {
       this.connected = true;
       this.getServicesList();
-      console.log(this.connected);
+      return;
     }
   }
 
@@ -125,25 +58,23 @@ export class AppModuleComponent implements OnInit {
     if (!this.discovered) {
       this.discovered = false;
       this.getServicesList();
-      console.log(this.discovered);
       return;
     } else {
       this.discovered = true;
       this.getServicesList();
-      console.log(this.discovered);
+      return;
     }
   }
 
-  filterUsed() {
-    if (!this.used) {
-      this.used = false;
+  filterUnused() {
+    if (!this.unused) {
+      this.unused = false;
       this.getServicesList();
-      console.log(this.used);
       return;
     } else {
-      this.used = true;
+      this.unused = true;
       this.getServicesList();
-      console.log(this.used);
+      return;
     }
   }
 
@@ -152,50 +83,63 @@ export class AppModuleComponent implements OnInit {
       .subscribe(data => {
         this.data = data;
         this.services = data.services;
-        if (this.connected && this.discovered && this.used) {
+        if (this.connected && this.discovered && this.unused) {
           this.services = data.services;
           console.log(this.services);
           return;
         }
         if (this.connected && this.discovered) {
+          const filters = {
+            installed: [1],
+            unused: [0, 1]
+          };
+          this.services = multiFilter(this.services, filters);
           console.log(this.services);
           return;
         }
-        if (this.connected && this.used) {
-          const filter = [ '1' ];
-          const services = this.services;
+        if (this.connected && this.unused) {
+          const filters = {
 
-          const result = [];
-
-          for (let i = 0; i < services.length; i++) {
-            for (const prop in filter) {
-
-              if (services.hasOwnProperty(prop) && services[i][prop] === filter[prop]) {
-                result.push(services[i]);
-                console.log(result);
-                console.log(prop);
-              }
-            }
-          }
-          this.services = result;
-          console.log(this.services);
-          return;
-
-        }
-        if (this.discovered && this.used) {
+            connected: [1, 0],
+            unused: [0]
+          };
+          this.services = multiFilter(this.services, filters);
           console.log(this.services);
           return;
         }
-        if (this.used) {
-          return this.services = this.services.filter(it => it.used === 0);
+        if (this.discovered && this.unused) {
+          const filters = {
+            connected: [0],
+            unused: [0, 1]
+          };
+          this.services = multiFilter(this.services, filters);
+          console.log(this.services);
+          return;
+        }
+        if (this.unused) {
+          const filters = {
+            unused: [0],
+            connected: [0]
+          };
+          this.services = multiFilter(this.services, filters);
+          console.log(this.services);
+          return;
         }
         if (this.connected) {
-          return this.services = this.services.filter(it => it.connected === 1);
+          const filters = {
+            connected: [1]
+          };
+          this.services = multiFilter(this.services, filters);
+          console.log(this.services);
+          return;
         }
         if (this.discovered) {
-          return this.services = this.services.filter(it => it.connected === 0);
-        } else {
-          this.services = data.services;
+          const filters = {
+            unused: [1]
+          };
+          this.services = multiFilter(this.services, filters);
+          console.log(this.services);
+          return;
         }
       });
   }

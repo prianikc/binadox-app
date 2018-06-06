@@ -1,5 +1,5 @@
-<div class="bg-gray wraper d-flex py-5 justify-content-center">
-  <div class="ui-card d-flex flex-column">
+<div class="bg-gray wraper  py-5">
+  <div class="ui-card mx-auto">
     <div>
       <strong>App Integration</strong>
     </div>
@@ -16,8 +16,8 @@
         <label class="form-check-label" for="discovered">
           Discovered (not connected)
         </label>
-        <input (change)="filterUsed()" [(ngModel)]="used" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox" value="" id="used">
-        <label class="form-check-label" for="used">
+        <input (change)="filterUnused()" [(ngModel)]="unused" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox" id="unused">
+        <label class="form-check-label" for="unused">
           Unused
         </label>
       </form>
@@ -28,18 +28,18 @@
       <div *ngFor="let service of services | filter: query:'name'"
       class="ui-service d-flex flex-wrap justify-content-between align-items-center"
       [ngClass]="{'brd-warning': service.warning}" 
-      [style.border-color]="!service.connected || !service.used ? '#9ea5b5':'#2bc339'"
+      [style.border-color]="service.connected ? '#2bc339':'#9ea5b5'"
       
       >
         <img src="{{service.url}}" alt="">
-        <p>{{service.name}}</p>
+        <p>{{service.name | capitalizeFirst}}</p>
         <div *ngIf="service.warning" ><i class="fa fa-exclamation-circle" aria-hidden="true"></i></div>
-        <div *ngIf="!service.used" ><i class="fa fa-lock" aria-hidden="true"></i></div>
+        <div *ngIf="!service.installed" ><i class="fa fa-lock" aria-hidden="true"></i></div>
         <div
         class="button-green"
-        *ngIf="service.used"
-        [style.background-color]="service.connected === 0 ? '#9ea5b5': '#2bc339'">
-          {{ service.connected ? "Connected" : "Connect" }}
+        *ngIf="service.connected || service.unused"
+        [style.background-color]="service.unused ? '#9ea5b5': '#2bc339'">
+          {{ !service.unused ? "Connected" : "Connect" }}
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ import { AppModuleComponent } from './app-module/app-module.component';
 import { AgentComponent } from './agent/agent.component';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { FilterPipe } from './filter.pipe';
-
+import { CapitalizeFirstPipe } from './capitalize-first.pipe';
 @NgModule({
   exports: [
   ],
@@ -24,7 +24,8 @@ import { FilterPipe } from './filter.pipe';
     TicketingComponent,
     AppModuleComponent,
     AgentComponent,
-    FilterPipe
+    FilterPipe,
+    CapitalizeFirstPipe
   ]
 })
 export class AdministrationModule { }
