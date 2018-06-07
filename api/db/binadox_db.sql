@@ -7,7 +7,7 @@
 #
 # Адрес: 127.0.0.1 (MySQL 5.7.21)
 # Схема: binadox_db
-# Время создания: 2018-06-04 10:08:53 +0000
+# Время создания: 2018-06-07 10:05:17 +0000
 # ************************************************************
 
 
@@ -30,27 +30,27 @@ CREATE TABLE `services` (
   `url` varchar(120) DEFAULT NULL,
   `name` varchar(50) DEFAULT NULL,
   `connected` tinyint(1) DEFAULT NULL,
-  `used` tinyint(1) DEFAULT NULL,
+  `unused` tinyint(1) DEFAULT NULL,
   `warning` tinyint(1) DEFAULT NULL,
+  `installed` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
 
-INSERT INTO `services` (`id`, `url`, `name`, `connected`, `used`, `warning`)
+INSERT INTO `services` (`id`, `url`, `name`, `connected`, `unused`, `warning`, `installed`)
 VALUES
-	(1,'./assets/img/services/atlassian.png','Atlassian',1,1,0),
-	(2,'./assets/img/services/google.png','Google G Suite',1,1,1),
-	(3,'./assets/img/services/salesforce.svg','Salesforce',0,1,1),
-	(4,'./assets/img/services/concur.png','Concur',0,0,1),
-	(5,'./assets/img/services/linkedin.png','LinkedIn',0,0,1),
-	(6,'./assets/img/services/box.png','Box',1,1,0),
-	(7,'./assets/img/services/office-365.svg','Office 365',1,1,0),
-	(8,'./assets/img/services/slack.svg','Slack',1,1,0),
-	(9,'./assets/img/services/gotomeeting.png','Gotomeeting',0,0,0),
-	(10,'./assets/img/services/webex.png','WebEx',0,0,1),
-	(11,'./assets/img/services/firefox-icon.png','Firefox',0,0,0);
+	(1,'./assets/img/services/atlassian.png','atlassian',1,0,0,1),
+	(2,'./assets/img/services/google.png','google G Suite',1,0,1,1),
+	(3,'./assets/img/services/salesforce.svg','salesforce',0,0,1,0),
+	(4,'./assets/img/services/concur.png','concur',0,0,1,0),
+	(5,'./assets/img/services/linkedin.png','linkedIn',0,0,1,0),
+	(6,'./assets/img/services/box.png','box',1,0,0,1),
+	(7,'./assets/img/services/office-365.svg','office 365',1,0,0,1),
+	(8,'./assets/img/services/slack.svg','slack',0,1,0,1),
+	(9,'./assets/img/services/gotomeeting.png','gotomeeting',0,0,0,0),
+	(10,'./assets/img/services/webex.png','webEx',0,0,1,0);
 
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;

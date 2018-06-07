@@ -5,7 +5,6 @@ import { FilterPipe, multiFilter } from '../filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CapitalizeFirstPipe } from '../capitalize-first.pipe';
-// import { multiFilter } from '../multi.filter';
 
 
 @Component({
@@ -85,7 +84,6 @@ export class AppModuleComponent implements OnInit {
         this.services = data.services;
         if (this.connected && this.discovered && this.unused) {
           this.services = data.services;
-          console.log(this.services);
           return;
         }
         if (this.connected && this.discovered) {
@@ -94,17 +92,14 @@ export class AppModuleComponent implements OnInit {
             unused: [0, 1]
           };
           this.services = multiFilter(this.services, filters);
-          console.log(this.services);
           return;
         }
         if (this.connected && this.unused) {
           const filters = {
-
             connected: [1, 0],
             unused: [0]
           };
           this.services = multiFilter(this.services, filters);
-          console.log(this.services);
           return;
         }
         if (this.discovered && this.unused) {
@@ -113,7 +108,6 @@ export class AppModuleComponent implements OnInit {
             unused: [0, 1]
           };
           this.services = multiFilter(this.services, filters);
-          console.log(this.services);
           return;
         }
         if (this.unused) {
@@ -122,7 +116,6 @@ export class AppModuleComponent implements OnInit {
             connected: [0]
           };
           this.services = multiFilter(this.services, filters);
-          console.log(this.services);
           return;
         }
         if (this.connected) {
@@ -130,7 +123,6 @@ export class AppModuleComponent implements OnInit {
             connected: [1]
           };
           this.services = multiFilter(this.services, filters);
-          console.log(this.services);
           return;
         }
         if (this.discovered) {
@@ -138,7 +130,6 @@ export class AppModuleComponent implements OnInit {
             unused: [1]
           };
           this.services = multiFilter(this.services, filters);
-          console.log(this.services);
           return;
         }
       });
