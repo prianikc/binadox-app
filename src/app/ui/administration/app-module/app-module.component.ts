@@ -1,10 +1,13 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, TemplateRef } from '@angular/core';
 import { AdminService } from '../admin.service';
 import { Observable } from 'rxjs';
 import { FilterPipe, multiFilter } from '../filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CapitalizeFirstPipe } from '../capitalize-first.pipe';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
 
 
 @Component({
@@ -14,6 +17,7 @@ import { CapitalizeFirstPipe } from '../capitalize-first.pipe';
 })
 
 export class AppModuleComponent implements OnInit {
+  modalRef: BsModalRef;
   public query = '';
   public connected = false;
   public discovered = false;
@@ -34,8 +38,13 @@ export class AppModuleComponent implements OnInit {
     ]
   };
   public services: any = [];
-  constructor(private adminService: AdminService) { }
-
+  constructor(
+    private adminService: AdminService,
+    private modalService: BsModalService
+  ) { }
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
 
   ngOnInit() {
     this.getServicesList();

@@ -3,20 +3,27 @@
     <div>
       <strong>App Integration</strong>
     </div>
+
     <div class="search-box py-3">
 
 
       <form class="d-flex flex-row align-items-center">
-        <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" class="form-control form-search mr-sm-2" type="text" placeholder="Search">
-        <input  (change)="filterConnected()" [(ngModel)]="connected" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox" value="" id="connected">
+        <div class="input-wrapper">
+          <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" id="searchServices" class=" pl-4 form-control form-search mr-sm-2" type="text" placeholder="SEARCH APPS">
+          <label for="searchServices" class="fa fa-search input-icon"></label>
+        </div>
+        <input (change)="filterConnected()" [(ngModel)]="connected" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox"
+          value="" id="connected">
         <label class="form-check-label" for="connected">
           Connected
         </label>
-        <input (change)="filterDiscovered()" [(ngModel)]="discovered" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox" value="" id="discovered">
+        <input (change)="filterDiscovered()" [(ngModel)]="discovered" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox"
+          value="" id="discovered">
         <label class="form-check-label" for="discovered">
           Discovered (not connected)
         </label>
-        <input (change)="filterUnused()" [(ngModel)]="unused" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox" id="unused">
+        <input (change)="filterUnused()" [(ngModel)]="unused" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox"
+          id="unused">
         <label class="form-check-label" for="unused">
           Unused
         </label>
@@ -25,20 +32,29 @@
 
     </div>
     <div class="ui-services-box d-flex flex-wrap justify-content-between">
-      <div *ngFor="let service of services | filter: query:'name'"
-      class="ui-service d-flex flex-wrap justify-content-between align-items-center"
-      [ngClass]="{'brd-warning': service.warning}" 
-      [style.border-color]="service.connected ? '#2bc339':'#9ea5b5'"
-      
-      >
+      <div *ngFor="let service of services | filter: query:'name'" class="ui-service d-flex flex-wrap justify-content-between align-items-center"
+        [ngClass]="{'brd-warning': service.warning}" [style.border-color]="service.connected ? '#2bc339':'#9ea5b5'" (click)="openModal(template)">
+        <ng-template #template>
+          <div class="modal-header">
+            <h4 class="modal-title pull-left">Modal</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <img src="{{service.url}}" alt="">
+            <div *ngIf="service.connected">connected</div>
+          </div>
+        </ng-template>
         <img src="{{service.url}}" alt="">
         <p>{{service.name | capitalizeFirst}}</p>
-        <div *ngIf="service.warning" ><i class="fa fa-exclamation-circle" aria-hidden="true"></i></div>
-        <div *ngIf="!service.installed" ><i class="fa fa-lock" aria-hidden="true"></i></div>
-        <div
-        class="button-green"
-        *ngIf="service.connected || service.unused"
-        [style.background-color]="service.unused ? '#9ea5b5': '#2bc339'">
+        <div *ngIf="service.warning">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+        </div>
+        <div *ngIf="!service.installed">
+          <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+        <div class="button-green" *ngIf="service.connected || service.unused" [style.background-color]="service.unused ? '#9ea5b5': '#2bc339'">
           {{ !service.unused ? "Connected" : "Connect" }}
         </div>
       </div>

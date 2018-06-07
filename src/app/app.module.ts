@@ -4,8 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
-
-
 import { AppComponent } from './app.component';
 import { SigInComponent } from './ui/sig-in/sig-in.component';
 
@@ -16,7 +14,9 @@ import { SignUpComponent } from './ui/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { UiModule } from './ui/ui.module';
 import { AdminService } from './ui/administration/admin.service';
-import { StatusColorDirective } from './ui/administration/status-color.directive';
+
+import { ModalModule } from 'ngx-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +24,6 @@ import { StatusColorDirective } from './ui/administration/status-color.directive
     SigInComponent,
     SignUpComponent,
     PageNotFoundComponent,
-    StatusColorDirective,
 
   ],
   imports: [
@@ -34,6 +33,7 @@ import { StatusColorDirective } from './ui/administration/status-color.directive
     AppRoutingModule,
     HttpClientModule,
     UiModule,
+    ModalModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
