@@ -36,17 +36,21 @@
         [ngClass]="{'brd-warning': service.warning}" [style.border-color]="service.connected ? '#2bc339':'#9ea5b5'" (click)="openModal(template)">
         <ng-template #template>
           <div class="modal-header">
-            <h4 class="modal-title pull-left">Modal</h4>
-            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <img class="pull-left" src="{{service.url}}" alt="">
+            <button type="button" class="close pull-right pt-4" aria-label="Close" (click)="modalRef.hide()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <img src="{{service.url}}" alt="">
-            <div *ngIf="service.connected">connected</div>
+           
+            <div *ngIf="service.connected">
+                <strong>Connected</strong> 
+              <div class="button-disconnect"></div>
+              
+            </div>
           </div>
         </ng-template>
-        <img src="{{service.url}}" alt="">
+        <img [ngClass]="{'service-unused': !service.connected}" src="{{service.url}}" alt="">
         <p>{{service.name | capitalizeFirst}}</p>
         <div *ngIf="service.warning">
           <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
