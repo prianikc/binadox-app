@@ -9,7 +9,8 @@
 
       <form class="d-flex flex-row align-items-center">
         <div class="input-wrapper">
-          <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" id="searchServices" class=" pl-4 form-control form-search mr-sm-2" type="text" placeholder="SEARCH APPS">
+          <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" id="searchServices" class=" pl-4 form-control form-search mr-sm-2"
+            type="text" placeholder="SEARCH APPS">
           <label for="searchServices" class="fa fa-search input-icon"></label>
         </div>
         <input (change)="filterConnected()" [(ngModel)]="connected" [ngModelOptions]="{standalone: true}" class="ui-checkbox" type="checkbox"
@@ -42,11 +43,27 @@
             </button>
           </div>
           <div class="modal-body">
-           
-            <div *ngIf="service.connected">
-                <strong>Connected</strong> 
-              <div class="button-disconnect"></div>
-              
+
+            <div class="" *ngIf="service.connected">
+
+              <div class="row">
+                <div class="col-6">
+                  <strong class="service-status text-green">Connected</strong>
+                </div>
+                <div class="col-6 text-right">
+                  <div class="button-disconnect d-inline-block">
+                    <strong>Disconnect</strong>
+                  </div>
+                </div>
+                <div class="col-12 pt-5">
+                  <strong class="text-light-blue font-size-14">Connection parameters</strong>
+
+                </div>
+              </div>
+
+
+
+
             </div>
           </div>
         </ng-template>

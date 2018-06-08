@@ -1,55 +1,55 @@
+@import "../../../assets/scss/helpers";
 .active {
-  color: white !important;
-  border-bottom: 5px solid #4982F9;
-  position: absolute;
-  top: -5px;
+    color: white !important;
+    border-bottom: 5px solid $main-blue;
+    position: absolute;
+    top: -5px;
 }
 
 .ui-link {
-  position: relative;
-  color: #9CA8BD;
-  font-size: 12px;
-  padding: 19px 45px 16px 45px;
-  background-color: #212d49;
+    position: relative;
+    color: $main-gray;
+    font-size: 12px;
+    padding: 19px 45px 16px 45px;
+    background-color: $main-deep-blue;
 }
 
 .binadox-logo-white {
-  background-color: #31436c;
-  width: 267px;
-  height: 52px;
-  img {
-    width: 120px;
-    height: 27px;
-  }
+    background-color: $main-light-blue;
+    width: 267px;
+    height: 52px;
+    img {
+        width: 120px;
+        height: 27px;
+    }
 }
 
 .nav-top {
-  background-color: #31436c;
+    background-color: $main-light-blue;
 }
 
 .nav-bottom {
-  background-color: #212d49;
-  height: 52px;
-  .empty-block {
-    content: '';
-    width: 267px;
-  }
+    background-color: $main-deep-blue;
+    height: 52px;
+    .empty-block {
+        content: '';
+        width: 267px;
+    }
 }
 
 .user-nav {
     font-size: 26px;
-  height: 52px;
-  padding-right: 124px;
-  color: #C8C8C8;
-  .user-name {
-      font-size: 10px;
-      color: #fff;
-      margin: 0;
-      padding-left: 20px;
-      padding-right: 15px;  
-      
-  }
-  .fa-chevron-down {
-      font-size: 11px;
-  }
+    height: 52px;
+    padding-right: 124px;
+    color: $main-light-gray;
+    .user-name {
+        font-size: 10px;
+        color: white;
+        margin: 0;
+        padding-left: 20px;
+        padding-right: 15px;
+    }
+    .fa-chevron-down {
+        font-size: 11px;
+    }
 }

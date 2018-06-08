@@ -1,8 +1,27 @@
+$main-red: #f45757;
+$main-blue: #4982F9;
+$main-light-blue: #31436c;
+$main-deep-blue: #212d49;
+$main-gray:#9CA8BD;
+$main-light-gray:#c8c8c8;
+$main-silver:#e9e9e9;
+$main-green: #2bc339;
+
+.font-size-14 {
+    font-size: 14px;
+}
+.text-green {
+    color: $main-green;
+}
+
+.text-light-blue {
+    color: $main-light-blue
+}
 
 .wraper {
     height: 90vh;
     min-height: 500px;
-  }
+}
 
 .button {
     margin-left: auto;
@@ -12,25 +31,45 @@
     font-size: 11px;
     font-weight: 700;
     text-align: center;
-    color: #fff;
+    color: white;
     border-radius: 16px;
-    background-color: #487ffe;
+    background-color: $main-blue;
 }
+
 .button-green {
-    padding-top: 8px;
+    padding-top: 7px;
     width: 98px;
     height: 32px;
     border: none;
     font-size: 12px;
     font-weight: 400;
     text-align: center;
-    color: #fff;
+    color: white;
     border-radius: 16px;
-    background-color: #2bc339;
+    background-color: $main-green;
 }
+
+.button-disconnect {
+    padding-top: 7px;
+    padding: {
+        right: 50px;
+        left: 50px;
+    }
+    min-width: 98px;
+    min-height: 32px;
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    border-radius: 16px;
+    background-color: $main-red;
+}
+
 .button:disabled {
-    background: #9ea5b5;
+    background: $main-gray;
 }
-.bg-gray{
-    background: #f7f7f7;
+
+.bg-gray {
+    background: $main-silver;
 }
