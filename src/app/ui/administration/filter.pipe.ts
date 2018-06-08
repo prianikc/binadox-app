@@ -10,7 +10,7 @@ export class FilterPipe implements PipeTransform {
   }
 }
 
-export const multiFilter = (arr: Object[], filters: Object) => {
+export function multiFilter (arr: Object[], filters: Object) {
   const filterKeys = Object.keys(filters);
   return arr.filter(eachObj => {
     return filterKeys.every(eachKey => {
@@ -20,5 +20,5 @@ export const multiFilter = (arr: Object[], filters: Object) => {
       return filters[eachKey].includes(eachObj[eachKey]);
     });
   });
-};
+}
 // filter(item => item.connected === 1);
