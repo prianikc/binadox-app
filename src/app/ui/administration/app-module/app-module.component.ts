@@ -33,7 +33,8 @@ export class AppModuleComponent implements OnInit {
     ]
   };
   public services: any = [];
-  items = [true, 'Two', 3];
+  items = [
+    'MONTH', 'Two', 3];
   constructor(
     private adminService: AdminService,
     private modalService: BsModalService

@@ -1,130 +1,146 @@
 @import "../../../../assets/scss/helpers";
 .ui-card {
-  max-width: 844px;
-  padding: 30px;
-  box-shadow: 1.2px 1.6px 8px 0 rgba(0, 0, 0, .06);
-  border: 1px solid $main-silver;
-  border-radius: 4px;
-  background: white;
+    max-width: 844px;
+    padding: 30px;
+    box-shadow: 1.2px 1.6px 8px 0 rgba(0, 0, 0, .06);
+    border: 1px solid $main-silver;
+    border-radius: 4px;
+    background: white;
 }
 
 .ui-service {
-  width: 376px;
-  height: 70px;
-  border: 1px solid $main-green;
-  padding: 12px;
-  margin: 12px 0 12px 0;
-  border-radius: 5px;
-  cursor: pointer;
-  img {
-    width: 40px;
-  }
-  &:hover {
+    width: 376px;
+    height: 70px;
+    border: 1px solid $main-green;
+    padding: 12px;
+    margin: 12px 0 12px 0;
+    border-radius: 5px;
     cursor: pointer;
-    box-shadow: 1.2px 1.6px 8px 0 rgba(0, 0, 0, .06);
-    transform: scale(1.01);
-  }
+    img {
+        width: 40px;
+    }
+    &:hover {
+        cursor: pointer;
+        box-shadow: 1.2px 1.6px 8px 0 rgba(0, 0, 0, .06);
+        transform: scale(1.01);
+    }
 }
 
 p {
-  margin: 0;
+    margin: 0;
 }
 
 .ui-checkbox {
-  width: 14px;
-  margin: 0 10px 0 18px;
-  transform: scale(1.2);
+    width: 14px;
+    margin: 0 10px 0 18px;
+    transform: scale(1.2);
 }
 
 label {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .form-search {
-  border-radius: 0;
-  width: 300px;
-  padding-left: 30px !important;
+    border-radius: 0;
+    width: 300px;
+    padding-left: 30px !important;
 }
 
 .brd-warning {
-  border-color: $main-red !important;
+    border-color: $main-red !important;
 }
 
 .brd-not-connected {
-  border-color: $main-gray;
+    border-color: $main-gray;
 }
 
 .brd-unused {
-  border-color: $main-gray;
+    border-color: $main-gray;
 }
 
 .fa-exclamation-circle {
-  color: $main-red;
-  font-size: 25px;
+    color: $main-red;
+    font-size: 25px;
 }
 
 .fa-lock {
-  color: $main-gray;
-  font-size: 25px;
+    color: $main-gray;
+    font-size: 25px;
 }
 
 .input-icon {
-  position: absolute;
-  left: 10px;
-  top: calc(50% - 0.5em);
-  /* Keep icon in center of input, regardless of the input height */
+    position: absolute;
+    left: 10px;
+    top: calc(50% - 0.5em);
+    /* Keep icon in center of input, regardless of the input height */
 }
 
 input {
-  padding-left: 17px;
+    padding-left: 17px;
 }
 
 .input-wrapper {
-  position: relative;
+    position: relative;
 }
 
 .service-unused {
-  -webkit-filter: grayscale(100%) !important;
-  /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%) !important;
+    -webkit-filter: grayscale(100%) !important;
+    /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%) !important;
 }
 
 .modal-header {
-  border-bottom: none;
-  img {
-    width: 40px;
-  }
+    border-bottom: none;
+    img {
+        width: 40px;
+    }
 }
 
 .close {
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 0.7;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 0.7;
 }
 
 .service-status {
-  line-height: 32px;
+    line-height: 32px;
 }
 
 .date-box {
-  background-image: linear-gradient(to right, rgb(161, 161, 161) 33%, rgba(161, 161, 161,0) 0%);
-  background-position: bottom left;
-  background-size: 3px 1px;
-  background-repeat: repeat-x;
-  .fa-calendar-check-o {
-    padding-left: 165px;
-  }
+    background-image: linear-gradient(to right, rgb(161, 161, 161) 33%, rgba(161, 161, 161, 0) 0%);
+    background-position: bottom left;
+    background-size: 3px 1px;
+    background-repeat: repeat-x;
+    .fa-calendar-check-o {
+        padding-left: 165px;
+    }
 }
+
 .date-title {
     font-size: 10px;
-    
 }
+
 .first-bill {
     padding-top: 16px;
 }
+
 .fix-btn {
-  box-shadow: none;
+    box-shadow: none;
 }
+
 .drop-btn {
-  border: 1px solid $main-gray;
+    border: 1px solid $main-gray;
+}
+
+.label {
+    line-height: 38px;
+}
+
+.ngx-select__placeholder,
+.ngx-select__selected,
+.ngx-select__toggle,
+.ngx-select__selected-single {
+    font-size: 14px !important;
+    padding-left: 11px !important;
+    padding-top: 1px !important;
 }

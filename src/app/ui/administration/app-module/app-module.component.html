@@ -4,7 +4,7 @@
       <strong>App Integration</strong>
     </div>
 
-    
+
 
     <div class="search-box py-3">
 
@@ -37,6 +37,7 @@
     <div class="ui-services-box d-flex flex-wrap justify-content-between">
       <div *ngFor="let service of services | filter: query:'name'" class="ui-service d-flex flex-wrap justify-content-between align-items-center"
         [ngClass]="{'brd-warning': service.warning}" [style.border-color]="service.connected ? '#2bc339':'#9ea5b5'" (click)="openModal(template)">
+       
         <ng-template #template>
           <div class="modal-header">
             <img class="pull-left" src="{{service.url}}" alt="">
@@ -79,26 +80,29 @@
                 </div>
               </div>
               <div class="row pt-4">
-                <div class="btn-group" dropdown>
-                  <button id="button-basic" dropdownToggle type="button" class="btn fix-btn drop-btn dropdown-toggle"
-                          aria-controls="dropdown-basic">
-                    Button dropdown <span class="caret"></span>
-                  </button>
-                  <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                      role="menu" aria-labelledby="button-basic">
-                    <li class="dropdown-item" role="menuitem">Action</li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
-                    <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
-                    </li>
-                  </ul>
+                <div class="col-4">
+                  <div class="label text-darck-gray">
+                    Billing period
+                  </div>
                 </div>
-              </div> 
-
-
+                <div class="col-8">
+                  <ngx-select placeholder="MONTH" style="width: 100%;" [items]="items" [(ngModel)]="itemId"></ngx-select>
+                </div>
+              </div>
+              <div class="row pt-4">
+                <div class="col-4">
+                  <div class="label text-darck-gray">
+                    Payment plan
+                  </div>
+                </div>
+                <div class="col-8">
+                  <ngx-select style="width: 100%;" [items]="items" [(ngModel)]="itemId"></ngx-select>
+                </div>
+              </div>
             </div>
           </div>
         </ng-template>
+
         <img [ngClass]="{'service-unused': !service.connected}" src="{{service.url}}" alt="">
         <p>{{service.name | capitalizeFirst}}</p>
         <div *ngIf="service.warning">

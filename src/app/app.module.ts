@@ -14,7 +14,6 @@ import { SignUpComponent } from './ui/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.component';
 import { UiModule } from './ui/ui.module';
 import { AdminService } from './ui/administration/admin.service';
-
 import { ModalModule } from 'ngx-bootstrap';
 
 
