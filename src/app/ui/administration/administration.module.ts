@@ -10,6 +10,8 @@ import { AgentComponent } from './agent/agent.component';
 import { AdministrationRoutingModule } from './administration-routing.module';
 import { FilterPipe } from './filter.pipe';
 import { CapitalizeFirstPipe } from './capitalize-first.pipe';
+import { BsDropdownModule } from 'ngx-bootstrap';
+
 @NgModule({
   exports: [
   ],
@@ -17,7 +19,8 @@ import { CapitalizeFirstPipe } from './capitalize-first.pipe';
     CommonModule,
     AdministrationRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDropdownModule.forRoot()
   ],
   declarations: [
     AdministrationComponent,
@@ -25,7 +28,7 @@ import { CapitalizeFirstPipe } from './capitalize-first.pipe';
     AppModuleComponent,
     AgentComponent,
     FilterPipe,
-    CapitalizeFirstPipe
+    CapitalizeFirstPipe,
   ]
 })
 export class AdministrationModule { }

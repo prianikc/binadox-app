@@ -1,13 +1,8 @@
-import { Component, OnInit, Output, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AdminService } from '../admin.service';
-import { Observable } from 'rxjs';
-import { FilterPipe, multiFilter } from '../filter.pipe';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CapitalizeFirstPipe } from '../capitalize-first.pipe';
+import { multiFilter } from '../filter.pipe';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-
 
 
 @Component({
@@ -38,6 +33,7 @@ export class AppModuleComponent implements OnInit {
     ]
   };
   public services: any = [];
+  items = [true, 'Two', 3];
   constructor(
     private adminService: AdminService,
     private modalService: BsModalService

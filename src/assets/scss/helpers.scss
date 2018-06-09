@@ -2,7 +2,8 @@ $main-red: #f45757;
 $main-blue: #4982F9;
 $main-light-blue: #31436c;
 $main-deep-blue: #212d49;
-$main-gray:#9CA8BD;
+$main-gray:#b2b5b8;
+$main-darck-gray:#646464;
 $main-light-gray:#c8c8c8;
 $main-silver:#e9e9e9;
 $main-green: #2bc339;
@@ -15,9 +16,17 @@ $main-green: #2bc339;
 }
 
 .text-light-blue {
-    color: $main-light-blue
+    color: $main-light-blue;
 }
-
+.text-light-gray {
+    color: $main-light-gray;
+}
+.text-gray {
+    color: $main-gray;
+}
+.text-darck-gray {
+    color: $main-darck-gray;
+}
 .wraper {
     height: 90vh;
     min-height: 500px;
