@@ -10,7 +10,8 @@ In order to run the project, you need to have the MYSQL server installed and the
 
 New versions of Node.js already have npm, if you do not have one, install it.  
 
-Clone the repository. Open Terminal and run `npm install` from the project folder.  
+Clone the repository.  
+Open Terminal and run `npm install` from the project folder.  
 
 Import the database from the folder: api / db.  
 
