@@ -53,3 +53,11 @@
         font-size: 11px;
     }
 }
+.btn-loguot {
+    color: white;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+
+    }
+}

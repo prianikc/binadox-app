@@ -58,6 +58,18 @@ $main-green: #2bc339;
     background-color: $main-green;
 }
 
+.button-download {
+    padding-top: 7px;
+    width: 98px;
+    height: 32px;
+    border: none;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+    border-radius: 16px;
+    background-color: $main-blue;
+}
 .button-disconnect {
     padding-top: 7px;
     padding: {

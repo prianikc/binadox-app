@@ -17,7 +17,7 @@ export class AuthService {
     private _http: HttpClient,
     private jwtHelper: JwtHelperService) { }
 
-  private isAuthenticated(): boolean {
+  public isAuthenticated(): boolean {
     const token = localStorage.getItem('id_token');
     // Check whether the token is expired and return
     // true or false
@@ -27,12 +27,6 @@ export class AuthService {
   addUser(user: User): Observable<any> {
     return this._http.post<any>(this.API + '/signup', user);
   }
-  editUser(id, user: User): Observable<any> {
-    return this._http.post<any>(this.API + '/profile/' + id, user);
-  }
-  getById(id: string): Observable<any>  {
-    return this._http.get<any>(this.API + '/users/' + id);
-}
 
   login(email: string, password: string): Observable<any> {
     return this._http.post<any>(this.API + '/signin', { email, password })

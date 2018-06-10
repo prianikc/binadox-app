@@ -34,10 +34,12 @@
 
 
     </div>
+
+
     <div class="ui-services-box d-flex flex-wrap justify-content-between">
       <div *ngFor="let service of services | filter: query:'name'" class="ui-service d-flex flex-wrap justify-content-between align-items-center"
         [ngClass]="{'brd-warning': service.warning}" [style.border-color]="service.connected ? '#2bc339':'#9ea5b5'" (click)="openModal(template)">
-       
+
         <ng-template #template>
           <div class="modal-header">
             <img class="pull-left" src="{{service.url}}" alt="">
@@ -47,8 +49,8 @@
           </div>
           <div class="modal-body">
 
-            <div class="" *ngIf="service.connected">
-
+            <!-- <div *ngIf="service.connected"</div> -->
+            <div>
               <div class="row">
                 <div class="col-6">
                   <strong class="service-status text-green">Connected</strong>
@@ -79,24 +81,24 @@
 
                 </div>
               </div>
-              <div class="row pt-4">
+              <div class="row  pt-4">
                 <div class="col-4">
                   <div class="label text-darck-gray">
                     Billing period
                   </div>
                 </div>
                 <div class="col-8">
-                  <ngx-select placeholder="MONTH" style="width: 100%;" [items]="items" [(ngModel)]="itemId"></ngx-select>
+                  <ngx-select placeholder="MONTH" style="width: 100%;" [items]="items"></ngx-select>
                 </div>
               </div>
-              <div class="row pt-4">
+              <div class="row pb-5 pt-4">
                 <div class="col-4">
                   <div class="label text-darck-gray">
                     Payment plan
                   </div>
                 </div>
                 <div class="col-8">
-                  <ngx-select style="width: 100%;" [items]="items" [(ngModel)]="itemId"></ngx-select>
+                  <ngx-select style="width: 100%;" [items]="items"></ngx-select>
                 </div>
               </div>
             </div>
@@ -116,5 +118,9 @@
         </div>
       </div>
     </div>
+
+
+
+    
   </div>
 </div>

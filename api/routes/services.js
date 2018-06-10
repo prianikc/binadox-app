@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../configDB');
+const checkAuth = require('../middleware/check-auth');
 
-router.get('/', (req, res) => {
+
+router.get('/', checkAuth, (req, res) => {
     let sql = 'SELECT * FROM services';
     config.query(sql, (err, rows) => {
       if (err) {

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { JwtModule } from '@auth0/angular-jwt';
+import { JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
 import { SigInComponent } from './ui/sig-in/sig-in.component';
 
@@ -15,7 +15,19 @@ import { PageNotFoundComponent } from './ui/page-not-found/page-not-found.compon
 import { UiModule } from './ui/ui.module';
 import { AdminService } from './ui/administration/admin.service';
 import { ModalModule } from 'ngx-bootstrap';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthInterceptor } from './auth-interceptor';
 
+function gettoken() {
+  return localStorage.getItem('id_token');
+}
+
+const jwtConf: JwtModuleOptions = {
+  config: {
+    tokenGetter: gettoken,
+    whitelistedDomains: ['lockalhost:3000']
+  }
+};
 
 @NgModule({
   declarations: [
@@ -33,17 +45,18 @@ import { ModalModule } from 'ngx-bootstrap';
     HttpClientModule,
     UiModule,
     ModalModule.forRoot(),
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => {
-          return localStorage.getItem('id_token');
-        }
-      }
-    })
+    JwtModule.forRoot(jwtConf),
   ],
   providers: [
     AuthService,
-    AdminService
+    AdminService,
+    AuthGuardService,
+    AuthInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -55,10 +55,18 @@ label {
 .ngx-select__selected,
 .ngx-select__selected-single,
     {
-    font-size: 14px !important; //  padding-left: 11px !important;
-    padding-top: 1px !important;
+    font-size: 12px !important; //  padding-left: 11px !important;
+    padding-top: 3px !important;
+}
+.ngx-select__selected {
+    height: 38px !important;
+    margin-bottom: 0px;
 }
 
 .ngx-select__item_active {
     background-color: $main-gray !important;
+}
+.form-control:focus {
+    border-color: $main-light-gray;
+    height: 38px !important;
 }

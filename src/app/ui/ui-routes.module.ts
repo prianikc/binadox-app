@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { UiComponent } from './ui.component';
 import { AdministrationModule } from './administration/administration.module';
+import { AuthGuardService as AuthGuard } from '../auth-guard.service';
 
 const uiRoutes: Routes = [
     {
@@ -10,7 +11,7 @@ const uiRoutes: Routes = [
         children: [
             {
                 path: 'administration',
-                loadChildren: () => AdministrationModule
+                loadChildren: () => AdministrationModule, canActivate: [AuthGuard]
 
             },
             {
